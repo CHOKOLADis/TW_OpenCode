@@ -1,0 +1,1047 @@
+<html>
+<head>
+    <title>{EvnPSTemplateTitle}</title>
+    <style type="text/css">
+        @page port {
+            size: portrait;
+        }
+
+        @page land {
+            size: landscape;
+        }
+
+        body {
+            padding: 0px;
+        	width: 190mm;
+            margin: auto;
+        }
+
+        table {
+            border-collapse: collapse;			
+        }
+
+        .wordbreak{
+            word-break:break-all;
+        }
+        
+        .bordertable{
+            border: 1px solid #000;
+			font-size: 1em;
+        }
+        
+        .bordertable table, .bordertable tr, .bordertable td {
+            border: 1px solid #000;
+        }
+        
+        .t2 table, .t2 tr, .t2 td {
+            border: 1px solid #000;
+        }
+
+        span, div, td {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1em;
+        	padding: 0 0 0 .5em;
+        }
+        
+        td.value{
+        	vertical-align: top;
+			font-weight : bold;
+        }
+        
+        td.title{
+        	vertical-align: top;
+        }
+
+        .t {
+            width: 100%;
+        }
+
+            .t td:nth-child(odd) {
+                white-space: nowrap;
+            }
+
+            .t td:nth-child(even) {            	
+                border-bottom: 1px solid #000;
+            }
+
+        .c1 td:nth-child(even) {
+            width: 100%;
+        }
+
+        .c2 td:nth-child(even) {
+            width: 50%;
+        }
+
+        .c3 td:nth-child(even) {
+            width: 33.3%;
+        }
+
+
+        thead {
+            text-align: center;
+        }
+
+        .rotate {
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            /* also accepts left, right, top, bottom coordinates; not required, but a good idea for styling */
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+            /* Should be unset in IE9+ I think. */
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);        	
+        }
+        
+@media all
+{
+    div#print-control-block a.print-control
+    {
+        background-position: 0px 2px;
+        display: block;        
+        border-radius: 6px;
+        height: 28px;
+        width: 120px;
+        font-weight: bold;
+        color: #575656;
+        text-decoration: none;
+        padding: 12px 1px 1px 44px;
+        background-color: #FFFFFF;
+        float: right;
+        background-image: url('/img/Print-icon_small.png');
+        background-repeat: no-repeat;
+    	font-size: .8em;    	
+    }
+
+    div#print-control-block a.print-control:active
+    {
+        background-position: 1px 3px;
+        padding: 13px 0 0 45px;   
+    	
+    }
+
+    div#print-control-block
+    {
+        display: block;
+        width: 100%;
+        top: 0px;
+        left: 0px;        
+        position:fixed;        
+        padding: .5em 1em .5em 0;
+        height: 44px;     
+    }
+}
+
+@media print
+{
+    div#print-control-block, div#separator
+    {
+        display: none;
+    }    
+    
+    
+    div.printLandscape
+    {
+     -moz-transform: rotate(90deg); /* Для Firefox */
+     -ms-transform: rotate(90deg); /* Для IE */
+     -webkit-transform: rotate(90deg); /* Для Safari, Chrome, iOS */
+     -o-transform: rotate(90deg); /* Для Opera */
+     transform: rotate(90deg);    	
+    }
+}
+    </style>
+</head>
+<body>
+
+<div id="print-control-block">
+    <a class="print-control" href="javascript: window.print()" title="Вывод документа на печать">Отправить на печать</a>    
+</div>
+
+<div style='width:180mm'>
+    <table style="font-size:0.8em; width: 100%">
+        <tr>
+            <td style="width: 50%;">
+            <div style='text-align: right'>
+            Приложение № 4
+            <br />
+                Медицинская документация Форма №066/У-02
+            <br />
+                Утверждена приказом Минздрава РФ
+            <br />
+                от 03.03.2006 № 125-р
+                </div>
+            </td>
+        </tr>
+       
+    </table>
+
+    <div style="text-align: center; font-weight: bold; margin: 1em;">
+        <div>СТАТИСТИЧЕСКАЯ КАРТА ВЫБЫВШЕГО ИЗ СТАЦИОНАРА</div>
+        <div>круглосуточного пребывания, дневного стационара при больничном</div>
+        <div>учреждении, дневного стационара при  амбулаторно-поликлиническом</div>
+        <div>учреждении, стационара на дому</div>
+    </div>
+
+    <table class="t c1">
+        <tbody>
+            <tr style="display: flex;">
+                <td class="title">Номер в журнале приемного покоя</td>
+                <td class="value" style="width: 35%">{Num_in_magazine}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+            <tbody>
+                <tr style="display: flex;">
+                    <td class="title">№ Медицинской карты</td>
+                    <td class="value" style="width: 35%">{Num_medical_card}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">1. Код пациента</td>
+                <td class="value">{PersonCard_Code}</td>
+                <td class="title">2. Ф.И.О:</td>
+                <td class="value">{Person_Fio}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">3. Пол:</td>
+                <td class="value" style="border: 0px;">муж - 1 , жен - 2</td>
+                <td class="title">4. Дата рождения</td>
+                <td class="value">{Person_Birthday}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">5. Документ, удостоверящий личность: название серия, номер: </td>
+                <td class="value">{Document_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">6. Адрес регистрация по месту жительства:</td>
+                <td class="value">{UAddress_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">7. Код территории проживания:</td>
+                <td class="value">{Ocato}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">8. Страховой полис (серия, номер):</td>
+                <td class="value">{Polis_Ser} {Polis_Num}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c3" style="width: 90%; margin: 0px 0px 0px auto;">
+        <tbody>
+            <tr>
+                <td class="title">Выдан: кем</td>
+                <td class="value">{OrgSmo_Nick}</td>
+                <td class="title">Срок действия полиса с</td>
+                <td class="value">{Duration_from}</td>
+                <td class="title">по</td>
+                <td class="value">{Duration_by}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">9. Страховая категория:</td>
+                <td class="value fn_size14">1. - Застрахованный работающий житель Самарской области;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">2. - Застрахованный неработающий житель Сам. обл.;</td>
+                <td class="value fn_size14">3. - Временно незастрахованный</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t ">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">житель Сам. обл. 4. - БОМЖ; 5. - Иногородний РФ; 6. - Иностранец</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">10. Вид оплаты:</td>
+                <td class="value fn_size14">1-ОМС; 2-ср-тва граждан; 3 - договор с органниз.; 4-ДМС; 5-бюджет РФ;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">6 - бюджет субъекта РФ;</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <table class="t ">
+        <tbody>
+            <tr>
+                <td class="title">11. Социальный статус: </td>
+                <td class="value fn_size14">1 - работающий; 2 - дошкольник; 3 - учащийся; 4 - безработный;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">5 - беженец;</td>
+                <td class="value fn_size14">6 - временно неработающий; </td>
+                <td class="value fn_size14">7 - пенсионер; </td>
+                <td class="value fn_size14">8 - дошкольник; </td>
+                
+            </tr>
+            <tr>
+                <td class="value fn_size14">9 - военнослужащий; </td>
+                <td class="value fn_size14">10 - член семьи в/сп </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">12. Категория льготности.</td>
+                <td class="value fn_size14">Инвалид ВОВ - 1; участник ВОВ - 2; инв. 1гр. - 3; инв. 2гр. - 4;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">инв. 3гр. - 5; ребенок инвалид - 6; инвалид детства - 7</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c4">
+        <tbody>
+            <tr>
+                <td class="title">13. Кем направлен:</td>
+                <td class="value fn_size14">1 - АПУ;</td>
+                <td class="value fn_size14">2 - скорой помощью;</td>
+                <td class="value fn_size14">3 - прочими орган.;</td>
+                <td class="value fn_size14">4 - самостоятельно.;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">5 - поступил из СДП при стац.; 6 - из СДП при АПУ; 7 - из СДП на дому; 8 - из круглосут. и днев.</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">14. Кем доставлен</td>
+                <td class="value">{PrehospArrive_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">15. № направления</td>
+                <td class="value">{EvnDirection_Num}</td>
+                <td class="title">Дата</td>
+                <td class="value">{EvnDirection_setDate}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">16. Диагноз направившего учреждения</td>
+                <td class="value">{PrimaryHospDiag_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value one_line">{PrimaryHospDiag_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">17. Диагноз приемного отделения</td>
+                <td class="value">{PrimaryRecepDiag_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value one_line">{PrimaryRecepDiag_Name}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">18. Доставлен в состоянии опьянения:</td>
+                <td class="value no_brd">алкогольного - 1; наркотического - 2.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- !!! no data -->
+    <table class="t ">
+        <tbody>
+            <tr>
+                <td class="title">19. Госпитализирован по поводу данного заболевания в текущем году: </td>
+                <td class="value no_brd">1 - первично;</td><!-- в первые 6 часов  -1;   в теч. 7-24 часов - 2;  позднее 24-х часов – 3.         -->
+            </tr>
+            <tr>
+                <td class="value">2 - вторично.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- !!! no data -->
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">20. Доставлен: </td>
+                <td class="value no_brd">1 - по экстренным показаниям; 2 - планово.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- !!! no data -->
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">21. Доставлен в стационар от начала заболевания (получения травмы): </td>
+                <td class="value no_brd">в первые 6 </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="value no_brd"> часов - 1; в теч. 7-24 часов - 2; позднее 24-х часов – 3.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">22. Цель госпитализации: </td>
+                <td class="value fn_size14">1 - лечение; 2 - роды; 3 - аборт; 4 - дообследование; 5 - уточнение</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">диагноза; 6 - экспертный случай; 7 - медико-социальный уход; 8 - прочее.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">23. Срок беременности (в неделях):</td>
+                <td class="value fn_size14 yes_brd">{Pregnancy_period}</td>
+                <td class="title">№ беременности</td>
+                <td class="value fn_size14 yes_brd">{id_Pregnancy}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">24. Травма: </td>
+                <td class="value fn_size14">1 - промышленная; 2 - с/х; 3 - строительная; 4 - дорожно-транспортная; 5 - пр.</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t ">
+        <tbody>
+            <tr>
+                <td class="value fn_size14"> произв.; 6 - бытовая; 7 - уличная; 8 - непроизв. дорожно-транспортная; 9 - школьная;</td>
+            </tr>
+            <tr>
+                <td class="value fn_size14">10 - спортивная; 11 - прочая непроизв.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c3">
+        <tbody>
+            <tr>
+                <td class="title">25. Дата поступления в приемное отделение: "</td>
+                <td class="value fn_size12 yes_brd">{day}</td>
+                <td class="title">"</td>
+                <td class="value fn_size12 yes_brd">{month_year}</td>
+                <td class="title">Время</td>
+                <td class="value fn_size12 yes_brd">{EvnPS_comeTime}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">26. Название отделения: </td>
+                <td class="value">{department_name}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">27. Врач приемного отделения: </td>
+                <td class="value">{Doctor_emergency_department}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c3">
+        <tbody>
+            <tr>
+                <td class="title">28. Дата выписки (смерти): "</td>
+                <td class="value fn_size14 yes_brd">{day}</td>
+                <td class="title">"</td>
+                <td class="value fn_size14 yes_brd">{month_year}</td>
+                <td class="title">Время</td>
+                <td class="value fn_size14 yes_brd">{EvnPS_comeTime}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1" style="width: 25%; display: block; margin: 0px auto;"> 
+        <tbody>
+            <tr>
+                <td class="title">Койко/дни</td>
+                <td class="value fn_size14 yes_brd">{bed_days}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">29. Исход госпитализации:</td>
+                <td class="value fn_size14">1 - выписан без нарушения режима; 2 - умер; 3 - переведен в </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14"> другой стационар; 4 - выписан с нарушением режима; 5 - лечение продолжается; 6 -выпис в </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">СДП при стац; 7 -вып в СДП при АПУ; 8 - выписан в стацион. на дому; 9 - выписан из СДП в круглосут.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">30.  Результат госпитализации: </td>
+                <td class="value fn_size14">1 - выздоровление; 2 - улучшение; 3 - без перемен;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t ">
+        <tbody>
+            <tr>
+                
+                <td class="value fn_size14">4 - ухудшение; 5 - здоров</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">Обследован: RW 1</td>
+                <td class="value">{examined_RW1}&nbsp;</td>
+                <td class="title">AIDS</td>
+                <td class="value">{examined_AIDS}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="page-break-after: always;"></div>
+
+    <div style="margin-top: 1em; margin-bottom: 1em;">
+        <span>32. Движение пациента по отделениям:</span>
+        <table class='bordertable wordbreak'>
+            <thead>
+                <tr>
+                    <td>№ п/п</td>
+                    <td>Код отдел.</td>
+                    <td>Профиль коек</td>
+                    <td>Код врача</td>
+                    <td>Дата поступления</td>
+                    <td>Дата выписки</td>
+                    <td>Код диагноза по МКБ</td>
+                </tr>
+                <tr style='font-size:0.8em;'>
+                    <td>1</td>
+                    <td>{EvnSection_id}</td>  <!-- -->
+                    <td style='text-transform:lowercase'>{LpuSectionBedProfile_Name}</td>
+                    <td>{MedPersonal_Code}</td>
+                    <td>{EvnSection_setDT}</td>
+                    <td>{EvnSection_disDT}</td>
+                    <td>{EvnSectionDiagOsn_Code}</td>
+                </tr>
+                <tr style='font-size:0.8em;'>
+                    <td>2</td>
+                    <td>{EvnSection_id}</td>  <!-- -->
+                    <td style='text-transform:lowercase'>{LpuSectionBedProfile_Name}</td>
+                    <td>{MedPersonal_Code}</td>
+                    <td>{EvnSection_setDT}</td>
+                    <td>{EvnSection_disDT}</td>
+                    <td>{EvnSectionDiagOsn_Code}</td>
+                </tr>
+                <tr style='font-size:0.8em;'>
+                    <td>3</td>
+                    <td>{EvnSection_id}</td>  <!-- -->
+                    <td style='text-transform:lowercase'>{LpuSectionBedProfile_Name}</td>
+                    <td>{MedPersonal_Code}</td>
+                    <td>{EvnSection_setDT}</td>
+                    <td>{EvnSection_disDT}</td>
+                    <td>{EvnSectionDiagOsn_Code}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div style="margin-top: 1em; margin-bottom: 1em;">
+        <span>33. Хирургические операции (обозначить: основную операцию, использование спец. аппаратуры):</span>
+        <table class="bordertable wordbreak">
+            <thead>
+                <tr>
+                    <td rowspan="2">Дата, время</td>
+                    <td rowspan="2">Код хир.</td>
+                    <td rowspan="2">Код отдел.</td>
+                    <td colspan="2">Операция</td>
+                    <td colspan="2">Осложнение</td>
+                    <td rowspan="2">Анестезия</td>
+                    <td colspan="3">Тип аппаратуры</td>
+                </tr>
+                <tr>
+                    <td >Наименование</td>
+                    <td >Код</td>
+                    <td >Наименование</td>
+                    <td >Код</td>
+                    <td>энд.</td>
+                    <td>лазер.</td>
+                    <td>криог.</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                </tr>
+            </thead>
+            <tbody style='font-size:0.8em;'>
+                {EvnUslugaOperData}
+                <tr>
+                    <td>{EvnUslugaOper_setDT}</td>
+                    <td>{MedPersonal_Code}</td>
+                    <td>{LpuSection_Code}</td>
+                    <td>{Usluga_Name}</td>
+                    <td>{Usluga_Code}</td>
+                    <td>{AggType_Name}</td>
+                    <td>{AggType_Code}</td>
+                    <td>{AnesthesiaClass_Name}</td>
+                    <td>{EvnUslugaOper_IsEndoskop}</td>
+                    <td>{EvnUslugaOper_IsLazer}</td>
+                    <td>{EvnUslugaOper_IsKriogen}</td>
+                </tr>
+                {/EvnUslugaOperData}
+            </tbody>
+            <tbody style='font-size:0.8em;'>
+                {EvnUslugaOperData}
+                <tr>
+                    <td>{EvnUslugaOper_setDT}</td>
+                    <td>{MedPersonal_Code}</td>
+                    <td>{LpuSection_Code}</td>
+                    <td>{Usluga_Name}</td>
+                    <td>{Usluga_Code}</td>
+                    <td>{AggType_Name}</td>
+                    <td>{AggType_Code}</td>
+                    <td>{AnesthesiaClass_Name}</td>
+                    <td>{EvnUslugaOper_IsEndoskop}</td>
+                    <td>{EvnUslugaOper_IsLazer}</td>
+                    <td>{EvnUslugaOper_IsKriogen}</td>
+                </tr>
+                {/EvnUslugaOperData}
+            </tbody>
+            <tbody style='font-size:0.8em;'>
+                {EvnUslugaOperData}
+                <tr>
+                    <td>{EvnUslugaOper_setDT}</td>
+                    <td>{MedPersonal_Code}</td>
+                    <td>{LpuSection_Code}</td>
+                    <td>{Usluga_Name}</td>
+                    <td>{Usluga_Code}</td>
+                    <td>{AggType_Name}</td>
+                    <td>{AggType_Code}</td>
+                    <td>{AnesthesiaClass_Name}</td>
+                    <td>{EvnUslugaOper_IsEndoskop}</td>
+                    <td>{EvnUslugaOper_IsLazer}</td>
+                    <td>{EvnUslugaOper_IsKriogen}</td>
+                </tr>
+                {/EvnUslugaOperData}
+            </tbody>
+        </table>
+    </div>
+
+    <span>* анастезия: общая - 1; местная - 2.</span>
+
+    <div style="margin-top: 1em; margin-bottom: 1em;">
+        <span>34. Диагноз стационара при выписке:</span>
+        <table class="bordertable">
+            <thead>
+                <tr>
+                    <td style="height: 120px;" rowspan="2">Клинический<br />заключительный</td>
+                    <td style="height: 40%;">Основное заболевание</td>
+                    <td>Код МКБ</td>
+                    <td>Осложнение</td>
+                    <td>Код МКБ</td>
+                    <td>Сопутствующие заболевания</td>
+                    <td>Код МКБ</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr class="no_brd">
+                    <td class="no_brd" colspan="7">Выявлен впервые, повторно (подчеркнуть) </td>
+                </tr>
+                <tr rowspan="2" class="no_brd">
+                    <td class="no_brd" colspan="2">Характер заболевания:</td>
+                    <td class="no_brd"  colspan="5">1 - острое; 2 - впервые в жизни хроническое; 3 - известное хроническое; 4 - обострение хронического.</td>
+                </tr>
+                <tr>
+                    <td style="height: 80px; text-align: center;">Паталого-<br />анатомический</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <table class="t c3">
+        <tbody>
+            <tr>
+                <td>Диагноз МКБ</td>
+                <td>&nbsp;</td>
+                <td>КСГ</td>
+                <td>&nbsp;</td>
+                <td>Коэффициент</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">31. Листок нетрудоспособности: Серия</td>
+                <td class="value">&nbsp;</td>
+                <td class="title">номер</td>
+                <td class="value">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c2" >
+        <tbody>
+            <tr style="width: 85%;display: block; margin: 0px auto;">
+                <td class="title">Открыт</td>
+                <td class="value">&nbsp;</td>
+                <td class="title">Закрыт</td>
+                <td class="value">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c2">
+        <tbody>
+            <tr>
+                <td class="title">Уход за больным: Полных лет</td>
+                <td class="value">&nbsp;</td>
+                <td class="title">Пол: </td>
+                <td class="value no_brd">муж - 1; жен - 2.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">35. Морфологический тип опухоли</td>
+                <td class="value">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="title">36. Стадия опухолевого процесса: </td>
+                <td class="value fn_size14">1 - первая "А"; 2 - вторая "В"; 3 - первая "С"; 4 - первая стадия;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">5 - вторая стадия "А"; 6 - вторая "В"; 7 - вторая "С"; 8 - вторая стадия; 9 - третья "А"; 10 - третья "В";</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">11 - третья "С"; 12 - третья стадия; 13 - четвертая "А"; 14 - четвертая "В"; 15 - четвертая "С"; 16 -</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">четвертая; 17 - in situ; 18 - неприменимо; 19 - неизвестно.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="title">37. Стадия опухолевого процесса: TNM </td>
+                <td class="value">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="title">38. Локализация отдаленных метастазов: </td>
+                <td class="value fn_size14">1 - лимфатические узлы; 2 - кости; 3 - печень; 4 - легкие</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">и/или плевра; 5 - плевра; 6 - головной мозг; 7 - кожа; 8 - почки; 9 - яичники; 10 - брюшина; 11 - костный</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t c1">
+        <tbody>
+            <tr>
+                <td class="value fn_size14">мозг; 12 - другие органы; 13 - множественные; 14 - неизвестно.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="title">39. Клиническая группа: </td>
+                <td class="value no_brd">1 - первая "А"; 2 - вторая "В"; 3 - третья; 4 - вторая; 5 - вторая "А";</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="value no_brd">6 - четвертая.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="title">40. Цель госпитализации онкологического больного: </td>
+                <td class="value no_brd">1 - выявление первичной опухоли; </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="t">
+        <tbody>
+            <tr>
+                <td class="value no_brd">2 - выявление и лечение первичной опухоли; 3 - лечение первичной опухоли;</td>
+            </tr>
+            <tr>
+                <td class="value no_brd">4 - продолжение лечения первичной опухоли; 5 - лечение ранее выявленного ЗНО;</td>
+            </tr>
+            <tr>
+                <td class="value no_brd" >6 - лечение рецедива заболевания; 7 -продолжение лечения рецедива заболевания; </td>
+            </tr>
+            <tr>
+                <td class="value no_brd" >8 - реабилитация; 9 - лечение поздниъ осложнений специального лечения; 10 - </td>
+            </tr>
+            <tr>
+                <td class="value no_brd" >симптоматическое лечение сопутствующих заболеваний; 12 - другая.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table class="t c1" style="margin-top: 10px;">
+        <tbody>
+            <tr>
+                <td class="title">41. В случае смерти указать основную причину </td>
+                <td class="value">&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="fn_size12" style="text-align: center;">Код по МКБ</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+    <div class="footer">
+        <table class="t c1">
+            <tbody>
+                <tr>
+                    <td>Подпись лечащего врача</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="t c1">
+            <tbody>
+                <tr>
+                    <td>Подпись заведующего отделением</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="t c1">
+            <tbody>
+                <tr>
+                    <td>Подпись зам. гл. врача по лечебной части</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<style>
+    .fn_size14{
+        font-size: 14px;
+        border: 0px !important;
+    }
+    .fn_size12{
+        font-size: 12.8px;
+        border: 0px !important;
+    }
+    .fn_size13{
+        font-size: 13.1px;
+        border: 0px !important;
+    }
+    .one_line{
+        margin-left: 10px; 
+        border-bottom: 1px solid #000;
+        display: block;
+    }
+    .no_brd{
+        border: 0px !important;
+    }
+    .yes_brd{
+        border-bottom: 1px solid #000 !important;
+    }
+    .footer{
+        margin: 0px auto;
+        width: 80%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+</style>
+</div>   
+</body>
+</html>
